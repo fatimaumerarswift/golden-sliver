@@ -6,15 +6,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Email() {
   return (
-    <section className=" max-w-full bg-[#1A1A1A] text-white ">
+    <section className=" max-w-full bg-[#1A1A1A] text-white relative">
 
       {/* Top image */}
-      <div className="relative py-8 flex w-full px-12">
+      <div className="relative py-8 flex w-full px-12 absolute md:left-[190px]">
         <Image
           src="/Group 1000002102.png"
           alt="Decorative"
-          width={80}
-          height={80}
+          width={140}
+          height={140}
           className="ml-auto mr-[10%] "
           
         />
@@ -54,8 +54,8 @@ export default function Email() {
         <Image
           src="/Group 1000002103.png"
           alt="Decorative"
-          width={80}
-          height={80}
+          width={140}
+          height={140}
         />
       </div>
 

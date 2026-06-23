@@ -1,65 +1,99 @@
+"use client";
+
 import { Playfair_Display, JetBrains_Mono, Inter } from "next/font/google";
-import { FaYoutube } from 'react-icons/fa'
+import { FaYoutube } from 'react-icons/fa';
 import Image from "next/image";
+import { useLang } from "@/components/uselang";
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"], style: ["normal", "italic"], });
+const inter = Inter({ subsets: ["latin"], style: ["normal", "italic"] });
 
-const cards = [
-    {
+const content = {
+  en: {
+    heading: "Featured",
+    headingHighlight: "Learning Resources",
+    subtext: "Watch curated educational content covering gold, silver, market trends, and investing strategies.",
+    cards: [
+      {
         image: "/img1.png",
         title: "Pro Gold",
-        desc: "Best YouTube videos covering gold investing,bullion markets,and wealth preservation"
-    },
-    {
+        desc: "Best YouTube videos covering gold investing, bullion markets, and wealth preservation.",
+      },
+      {
         image: "/img2.png",
-        title: "Pro Sliver",
-        desc: "Best YouTube videos covering silver investing,industrial demand,and market opportunities."
-    }
-]
+        title: "Pro Silver",
+        desc: "Best YouTube videos covering silver investing, industrial demand, and market opportunities.",
+      },
+    ],
+  },
+  de: {
+    heading: "Empfohlene",
+    headingHighlight: "Lernressourcen",
+    subtext: "Schauen Sie ausgewählte Bildungsinhalte über Gold, Silber, Markttrends und Anlagestrategien.",
+    cards: [
+      {
+        image: "/img1.png",
+        title: "Pro Gold",
+        desc: "Die besten YouTube-Videos über Goldinvestitionen, Barrenmärkte und Vermögenserhalt.",
+      },
+      {
+        image: "/img2.png",
+        title: "Pro Silber",
+        desc: "Die besten YouTube-Videos über Silberinvestitionen, Industrienachfrage und Marktchancen.",
+      },
+    ],
+  },
+};
 
 export default function Feature() {
-    return (
-        <>
-            <section className="max-w-full bg-white">
-                {/* text-Content */}
-                <div className="flex flex-col my-12 px-10 md:px-20">
-                    <h1 className={`${playfair.className} text-2xl md:text-3xl lg:text-4xl text-center `}>Featured <span className="text-[#B8860B]">Learning  </span>  Resources</h1>
-                    <p className="leading-relaxed text-center text-sm py-4">Watch curated educational content covering gold, silver, market trends, and investing strategies.</p>
-                </div>
-                {/* cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 mx-auto py-8 gap-8 max-w-4xl px-4">
-                    {cards.map((card, i) => (
-                        <article key={i} className="flex flex-col h-full">
+  const lang = useLang();
+  const t = content[lang];
 
-                            <div className="relative w-full">
-                                <Image
-                                    src={card.image}
-                                    alt={card.title}
-                                    width={430}
-                                    height={220}
-                                    className="rounded-t-xl w-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-black/40 rounded-t-xl" />
-                                <a href="" target="_blank" className="absolute inset-0 flex justify-center items-center">
-                                    <FaYoutube className="text-red-600 text-6xl" />
-                                </a>
-                            </div>
+  return (
+    <section className="max-w-full bg-white">
 
-                            <div className="bg-[#F7BD48CF] px-4 py-6 rounded-b-xl flex-1">
-                                <h1 className={`${playfair.className} font-bold text-2xl`}>
-                                    {card.title}
-                                </h1>
-                                <p className={`${inter.className} py-4`}>
-                                    {card.desc}
-                                </p>
-                            </div>
+      {/* Text Content */}
+      <div className="flex flex-col my-12 px-10 md:px-20">
+        <h1 className={`${playfair.className} text-2xl md:text-3xl lg:text-4xl text-center`}>
+          {t.heading}{" "}
+          <span className="text-[#B8860B]">{t.headingHighlight}</span>
+        </h1>
+        <p className="leading-relaxed text-center text-sm py-4">{t.subtext}</p>
+      </div>
 
-                        </article>
-                    ))}
-                </div>
-            </section>
-        </>
-    )
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 mx-auto py-8 gap-8 max-w-4xl px-4">
+        {t.cards.map((card, i) => (
+          <article key={i} className="flex flex-col h-full">
+
+            <div className="relative w-full">
+              <Image
+                src={card.image}
+                alt={card.title}
+                width={430}
+                height={220}
+                className="rounded-t-xl w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 rounded-t-xl" />
+              <a href="" target="_blank" className="absolute inset-0 flex justify-center items-center">
+                <img src="/youtube.png" alt="" width={80}/>
+              </a>
+            </div>
+
+            <div className="bg-[#F7BD48CF] px-4 py-6 rounded-b-xl flex-1">
+              <h1 className={`${playfair.className} font-bold text-2xl`}>
+                {card.title}
+              </h1>
+              <p className={`${inter.className} py-4`}>
+                {card.desc}
+              </p>
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+    </section>
+  );
 }
