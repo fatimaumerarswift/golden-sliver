@@ -1,5 +1,4 @@
 "use client"
-import Loadingbar from "@/components/Loadingbar";
 import Image from "next/image";
 import { useLang } from "@/components/uselang";
 import { Playfair_Display, JetBrains_Mono, Inter } from "next/font/google";
@@ -29,7 +28,7 @@ export default function MetalHero() {
   return (
     <>
       {/* Hero section */}
-      <div className="bg-white py-8 max-w-full px-12">
+      <div className="bg-white py-8 max-w-full px-12 ">
        <div className="relative overflow-hidden w-full rounded-xl h-[260px] sm:h-[320px] md:h-[380px] lg:h-[450px]">
                  <Image
                    src="/Rectangle5.png"
@@ -58,9 +57,9 @@ export default function MetalHero() {
                  </div>
                </div>
       </div>
-<Loadingbar/>
+
       {/* ticker bar */}
-      {/* <div className="w-full bg-black flex flex-wrap items-center gap-3 md:gap-4 py-3 md:py-4 px-4">
+      <div className="w-full bg-black flex flex-wrap items-center gap-3 md:gap-4 py-3 md:py-4 px-4">
         <div className="flex items-center gap-1">
           <span className={`${jetbrainsMono.className} text-white text-xs md:text-sm`}>XAU/USD:</span>
           <span className={`${jetbrainsMono.className} text-emerald-500 text-xs md:text-sm`}>2,341.20 +0.4%</span>
@@ -90,7 +89,7 @@ export default function MetalHero() {
           <span className={`${jetbrainsMono.className} text-white text-xs md:text-sm`}>XAG/USD:</span>
           <span className={`${jetbrainsMono.className} text-red-500 text-xs md:text-sm`}>28.45</span>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

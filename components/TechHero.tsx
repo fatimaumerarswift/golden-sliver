@@ -40,7 +40,7 @@ export default function TechHero() {
   return (
     <>
       {/* Hero section */}
-      <div className="bg-white py-8 max-w-full px-12">
+      <div className="bg-white py-8 max-w-full px-12 ">
         <div className="relative overflow-hidden rounded-xl h-[260px] sm:h-[320px] md:h-[380px] lg:h-[450px]">
           <Image
             src="/AI-tech.jpg"
