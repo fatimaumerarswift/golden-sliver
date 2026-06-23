@@ -29,7 +29,7 @@ export default function EstateHero() {
     <>
       {/* Hero section with background image */}
       <div className="bg-white py-6 max-w-full px-12">
-        <div className="relative overflow-hidden rounded-xl h-[260px] sm:h-[320px] md:h-[380px] lg:h-[450px]">
+        <div className="relative overflow-hidden rounded-xl h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px]">
           <Image
             src="/Rectangle3.png"
             alt="Gold bars background"
