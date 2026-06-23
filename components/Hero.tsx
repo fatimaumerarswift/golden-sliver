@@ -7,6 +7,7 @@ import { Playfair_Display, JetBrains_Mono, Inter } from "next/font/google";
 const playfair = Playfair_Display({ subsets: ["latin"] });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
+
 const content = {
   en: {
     categories: [
@@ -61,26 +62,21 @@ const content = {
 function CategoryCard({ label, img }: { label: string; img: string }) {
   const [hover, setHover] = useState(false);
   return (
-    <div onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)} style={{ position: "relative", borderRadius: 6, overflow: "hidden", height: 110, cursor: "pointer", flexShrink: 0, border: hover ? "2px solid #B8860B" : "2px solid transparent",transition: "border-color 0.25s ease",
-        boxSizing: "border-box", }}>
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="relative rounded-md overflow-hidden h-24 sm:h-28 md:h-[110px] cursor-pointer shrink-0 box-border transition-colors duration-300"
+      style={{ border: hover ? "2px solid #B8860B" : "2px solid transparent" }}
+    >
       <img
         src={img}
         alt={label}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: hover ? "scale(1.06)" : "scale(1)",
-          transition: "transform 0.3s ease", }}
+        className="w-full h-full object-cover block transition-transform duration-300"
+        style={{ transform: hover ? "scale(1.06)" : "scale(1)" }}
       />
       <span
-        style={{
-          position: "absolute",
-          bottom: 0, left: 0, right: 0,
-          padding: "6px 10px",
-          background: "linear-gradient(transparent, rgba(0,0,0,.65))",
-          color: "#fff",
-          fontSize: 13,
-          fontWeight: 600,
-          
-        }}
+        className={`${inter.className} absolute bottom-0 left-0 right-0 px-2 sm:px-2.5 py-1.5 text-white text-[11px] sm:text-xs font-semibold`}
+        style={{ background: "linear-gradient(transparent, rgba(0,0,0,.65))" }}
       >
         {label}
       </span>
@@ -99,78 +95,96 @@ export default function Hero() {
   const bottomRow = t.categories.slice(10, 12);
 
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 30px", background: "#fff", fontFamily: "system-ui, sans-serif" }}>
+    <div className="max-w-[1200px] mx-auto px-5 sm:px-6 md:px-8 py-6 md:py-6 bg-white">
 
-      {/* ── Row 1: 4 equal cards ── */}
-      <div  style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 10 }}>
-        {topRow.map((c) => <CategoryCard key={c.label} {...c}  />)}
+      {/* Row 1: 2 cols on mobile, 4 on desktop */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2.5 mb-3 md:mb-2.5">
+        {topRow.map((c) => (
+          <CategoryCard key={c.label} {...c} />
+        ))}
       </div>
 
-      {/* ── Row 2: left col | featured | right col ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 10, marginBottom: 10 }}>
+      {/* Row 2: stacked on mobile (all cards in a 2-col grid), 3-col (left | featured | right) on desktop */}
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-[1fr_2fr_1fr] md:gap-2.5 mb-3 md:mb-2.5">
 
-        {/* Left col */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {leftCol.map((c) => <CategoryCard key={c.label} {...c} />)}
+        {/* Left col - first 2 in a 2-col grid + full-width 3rd on mobile; single col stack on desktop */}
+        <div className="flex flex-col gap-3 md:gap-2.5 order-2 md:order-1">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-2.5">
+            {leftCol.slice(0, 2).map((c) => (
+              <CategoryCard key={c.label} {...c} />
+            ))}
+          </div>
+          {leftCol.slice(2).map((c) => (
+            <CategoryCard key={c.label} {...c} />
+          ))}
         </div>
 
         {/* Featured */}
-        <div onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)} style={{ position: "relative", borderRadius: 6, overflow: "hidden", height: 340, cursor: "pointer", border: hover ? "2px solid #B8860B" : "2px solid transparent", transition: "border-color 0.25s ease", boxSizing: "border-box" }}>
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="relative rounded-md overflow-hidden h-[300px] sm:h-80 md:h-[340px] cursor-pointer box-border transition-colors duration-300 order-1 md:order-2"
+          style={{ border: hover ? "2px solid #B8860B" : "2px solid transparent" }}
+        >
           <img
             src={t.featured.img}
             alt={t.featured.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            className="absolute inset-0 w-full h-full object-cover block"
           />
           <div
+            className="absolute inset-0 flex flex-col justify-end p-3 sm:p-5"
             style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 60%, transparent 100%)",
-              display: "flex", flexDirection: "column", justifyContent: "flex-end",
-              padding: 20,
+              background:
+                "linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 60%, transparent 100%)",
             }}
           >
             <span
-              style={{
-                display: "inline-block", background: "#C9A227", color: "#0000000",
-                fontSize: 12, fontWeight: 700, letterSpacing: ".6px", textTransform: "uppercase",
-                padding: "3px 10px", borderRadius: 3, marginBottom: 10, width: "fit-content",
-              }}
+              className={`${inter.className} inline-block text-[#000] text-[10px] sm:text-xs font-bold uppercase tracking-wide px-2 sm:px-2.5 py-1 rounded-sm mb-2 w-fit`}
+              style={{ background: "#C9A227" }}
             >
               {t.featured.tag}
             </span>
-            <h2 className={`${playfair.className}`} style={{ color: "#fff", fontSize: 22, fontWeight: 800, lineHeight: 1.25, margin: "0 0 10px", textShadow: "0 1px 4px rgba(0,0,0,.5)" }}>
+            <h2
+              className={`${playfair.className} text-white text-base sm:text-xl md:text-[22px] font-extrabold leading-snug mb-2 line-clamp-2`}
+              style={{ textShadow: "0 1px 4px rgba(0,0,0,.5)" }}
+            >
               {t.featured.title}
             </h2>
-            <p style={{ color: "rgba(255,255,255,.88)", fontSize: 13, lineHeight: 1.5, margin: "0 0 14px" }}>
+            <p className={`${inter.className} text-white/90 text-[11px] sm:text-[13px] leading-relaxed mb-3 line-clamp-3 sm:line-clamp-none`}>
               {t.featured.excerpt}
             </p>
             <a
               href="#"
-              style={{
-                display: "inline-block", border: "2px solid #B8860B",
-                color: "#B8860B", fontSize: 12, fontWeight: 600,
-                padding: "6px 18px", borderRadius: 4, width: "fit-content",
-              }}
+              className={`${inter.className} inline-block border-2 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 rounded w-fit`}
+              style={{ borderColor: "#B8860B", color: "#B8860B" }}
             >
               {t.featured.cta}
             </a>
           </div>
         </div>
 
-        {/* Right col */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {rightCol.map((c) => <CategoryCard key={c.label} {...c} />)}
+        {/* Right col - first 2 in a 2-col grid + full-width 3rd on mobile; single col stack on desktop */}
+        <div className="flex flex-col gap-3 md:gap-2.5 order-3 md:order-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-2.5">
+            {rightCol.slice(0, 2).map((c) => (
+              <CategoryCard key={c.label} {...c} />
+            ))}
+          </div>
+          {rightCol.slice(2).map((c) => (
+            <CategoryCard key={c.label} {...c} />
+          ))}
         </div>
       </div>
 
-      {/* ── Row 3: 2 cards centred under featured ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 10 }}>
-        <div />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-          {bottomRow.map((c) => <CategoryCard key={c.label} {...c} />)}
+      {/* Row 3: 2-col grid on mobile, centered under featured column on desktop */}
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_2fr_1fr] md:gap-2.5">
+        <div className="hidden md:block" />
+        <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-3 md:gap-2.5">
+          {bottomRow.map((c) => (
+            <CategoryCard key={c.label} {...c} />
+          ))}
         </div>
-        <div />
+        <div className="hidden md:block" />
       </div>
 
     </div>
