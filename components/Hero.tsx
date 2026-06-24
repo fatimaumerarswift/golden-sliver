@@ -140,7 +140,7 @@ export default function Hero() {
           >
             <span
               className={`${inter.className} inline-block text-[#000] text-[10px] sm:text-xs uppercase tracking-wide px-2 sm:px-2.5 py-1 rounded-sm mb-2 w-fit`}
-              style={{ background: "#C9A227" }}
+              style={{ background: "#F7BD48" }}
             >
               {t.featured.tag}
             </span>
@@ -155,8 +155,8 @@ export default function Hero() {
             </p>
             <a
               href="#"
-              className={`${inter.className} inline-block border-2 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 rounded w-fit`}
-              style={{ borderColor: "#B8860B", color: "#B8860B" }}
+                 className={`${inter.className} border border-[#B8860B] rounded-lg text-[#B8860B] text-sm font-semibold px-6 py-2 w-fit hover:bg-[#B8860B] hover:text-black transition-colors duration-200`}
+              
             >
               {t.featured.cta}
             </a>

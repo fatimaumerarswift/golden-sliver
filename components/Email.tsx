@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useLang } from "@/components/uselang";
 import { Playfair_Display, Inter } from "next/font/google";
 
-const playfair = Playfair_Display({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"] });
+const playfair = Playfair_Display({ subsets: ["latin"],  weight: ["400", "500", "600", "700", "800"] });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 const content = {
   en: {
@@ -56,13 +56,13 @@ export default function Email() {
       {/* Heading */}
       <div className="-mt-18">   
       <div className="max-w-3xl mx-auto px-6 text-center">
-        <h1 className={`${playfair.className} text-2xl md:text-4xl font-bold leading-snug `}>
-          {t.title1a}<span className="text-[#B8860B]">{t.title1b}</span>{t.title1c}
+        <h1 className={`${playfair.className} text-2xl md:text-4xl font-extrabold leading-snug `}>
+          {t.title1a}<span className="text-[#F7BD48]">{t.title1b}</span>{t.title1c}
         </h1>
-        <h1 className={`${playfair.className} text-2xl md:text-4xl font-bold leading-snug mb-4`}>
+        <h1 className={`${playfair.className} text-2xl md:text-4xl font-extrabold leading-snug mb-4`}>
           {t.title2}
         </h1>
-        <p className={`${inter.className} text-sm text-gray-300 leading-relaxed`}>
+        <p className={`${inter.className} text-lg text-gray-300 leading-relaxed`}>
           {t.desc1}
           <br />
           {t.desc2}

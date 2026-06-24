@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Playfair_Display, JetBrains_Mono, Inter } from "next/font/google";
 import { useLang } from "@/components/uselang";
 
-const playfair = Playfair_Display({ subsets: ["latin"] });
+const playfair = Playfair_Display({ subsets: ["latin"] , weight: ["400", "500", "600", "700"] });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], style: ["normal", "italic"] });
 
@@ -77,7 +77,7 @@ export default function MarcoCards() {
       <section className="max-w-full bg-white py-16">
         {/* text-Content */}
         <div className="flex flex-col my-6 px-10 md:px-20">
-          <h1 className={`${playfair.className} text-2xl md:text-3xl lg:text-4xl text-center`}>
+          <h1 className={`${playfair.className} font-bold text-2xl md:text-3xl lg:text-4xl text-center`}>
             {t.heading} <span className="text-[#B8860B]">{t.headingAccent}</span> {t.headingRest}
           </h1>
           <p className="leading-relaxed text-center text-xl py-4">{t.subheading}</p>

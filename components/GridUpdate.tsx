@@ -29,7 +29,7 @@ const cards = [
     date: "JUNE 01, 2026",
     button: "Bullion",
     badgeColor: "bg-green-500 hover:bg-green-700",
-    title:  "Demand For Resilient Energy Solutions Continues Rising",
+    title: "Demand For Resilient Energy Solutions Continues Rising",
     desc: "Investors increasingly prioritize preparedness and long-term energy independence.",
     image: "/grid.png"
   },
@@ -70,7 +70,7 @@ export default function GridUpdate() {
                   </div>
 
                   {/* Content row — image beside text, stacks on mobile */}
-                  <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="flex flex-col sm:flex-row items-start gap-8">
                     {/* Text */}
                     <div className="flex flex-col gap-2 flex-1 min-w-0">
                       <h2 className={`${playfair.className} font-bold leading-snug text-xl sm:text-2xl whitespace-pre-line`}>
@@ -85,9 +85,9 @@ export default function GridUpdate() {
                       <Image
                         src={card.image}
                         alt={card.title}
-                        width={100}
-                        height={0}
-                        className="rounded-md object-cover w-full sm:w-[100px]"
+                        width={200}
+                        height={200}
+                        className="rounded-md md:w-[200px] sm:w-[100px]"
                       />
                     </div>
                   </div>
@@ -113,13 +113,12 @@ export default function GridUpdate() {
                           {p.value}
                         </p>
                         <p
-                          className={`${jetbrainsMono.className} text-xs ${
-                            p.up === true
+                          className={`${jetbrainsMono.className} text-xs ${p.up === true
                               ? "text-green-600"
                               : p.up === false
-                              ? "text-red-500"
-                              : "text-gray-500"
-                          }`}
+                                ? "text-red-500"
+                                : "text-gray-500"
+                            }`}
                         >
                           {p.up === true ? "▲ " : p.up === false ? "▼ " : ""}
                           {p.change}

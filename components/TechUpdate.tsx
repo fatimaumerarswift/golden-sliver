@@ -20,7 +20,7 @@ const cards = [
     date: "JUNE 01, 2026",
     button: "Bullion",
     badgeColor: "bg-green-500 hover:bg-green-700",
-    title:  "AI Infrastructure Spending Reaches New Industry Milestone",
+    title: "AI Infrastructure Spending Reaches New Industry Milestone",
     desc: "Investment in data centers and advanced computing continues to accelerate across global markets.",
     image: "/infrastructure.jpg"
   },
@@ -29,7 +29,7 @@ const cards = [
     date: "JUNE 01, 2026",
     button: "Bullion",
     badgeColor: "bg-green-500 hover:bg-green-700",
-    title:  "AI Infrastructure Spending Reaches New Industry Milestone",
+    title: "AI Infrastructure Spending Reaches New Industry Milestone",
     desc: "Investment in data centers and advanced computing continues to accelerate across global markets.",
     image: "/infrastructure.jpg"
   },
@@ -70,7 +70,7 @@ export default function TechUpdate() {
                   </div>
 
                   {/* Content row — image beside text, stacks on mobile */}
-                  <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="flex flex-col sm:flex-row items-start gap-6">
                     {/* Text */}
                     <div className="flex flex-col gap-2 flex-1 min-w-0">
                       <h2 className={`${playfair.className} font-bold leading-snug text-xl sm:text-2xl whitespace-pre-line`}>
@@ -85,16 +85,15 @@ export default function TechUpdate() {
                       <Image
                         src={card.image}
                         alt={card.title}
-                        width={100}
-                        height={0}
-                        className="rounded-md object-cover w-full sm:w-[100px]"
+                        width={200}
+                        height={200}
+                        className="rounded-md md:w-[200px] sm:w-[100px]"
                       />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-
             {/* right side - Live Prices */}
             <div className="w-full max-w-[320px] my-8">
               <div className="bg-[#eeeeee] border border-[#E8DEC8] rounded-md p-5 lg:sticky lg:top-6">
@@ -113,13 +112,12 @@ export default function TechUpdate() {
                           {p.value}
                         </p>
                         <p
-                          className={`${jetbrainsMono.className} text-xs ${
-                            p.up === true
+                          className={`${jetbrainsMono.className} text-xs ${p.up === true
                               ? "text-green-600"
                               : p.up === false
-                              ? "text-red-500"
-                              : "text-gray-500"
-                          }`}
+                                ? "text-red-500"
+                                : "text-gray-500"
+                            }`}
                         >
                           {p.up === true ? "▲ " : p.up === false ? "▼ " : ""}
                           {p.change}

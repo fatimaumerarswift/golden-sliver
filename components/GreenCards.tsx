@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useLang } from "@/components/uselang";
 import { Playfair_Display, JetBrains_Mono, Inter } from "next/font/google";
 
-const playfair = Playfair_Display({ subsets: ["latin"] });
+const playfair = Playfair_Display({ subsets: ["latin"] , weight: ["400", "500", "600", "700"] });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], style: ["normal", "italic"], });
 
@@ -17,19 +17,19 @@ const content = {
         cards: [
             {
                 image: "/LS.png",
-                title: "Premium Home Safes",
+                title: "Green Energy ETFs",
                 desc: "Buy investment-grade gold and silver products from one of Germany’s established bullion retailers.",
                 offer: "Up to 6% commission",
             },
             {
                 image: "/VP.png",
-                title: "Tactical Gear",
+                title: "Trade Republic",
                 desc: "Precious metals investment solutions designed to help investors diversify and protect wealth.",
                 offer: "8–10% revenue share",
             },
             {
                 image: "/SS.png",
-                title: "Survival Education",
+                title: "eToro",
                 desc: "Purchase, store, and manage physical gold and silver through a globally trusted platform.",
                 offer: "25% recurring commission",
             },
@@ -44,19 +44,19 @@ const content = {
         cards: [
             {
                 image: "/LS.png",
-                title: "Premium-Heimtresore",
+                title: "Grüne Energie-ETFs",
                 desc: "Kaufen Sie investitionswürdige Gold- und Silberprodukte von einem der etablierten Edelmetallhändler Deutschlands.",
                 offer: "Bis zu 6% Provision",
             },
             {
                 image: "/VP.png",
-                title: "Taktische Ausrüstung",
+                title: "Trade Republic",
                 desc: "Edelmetall-Investmentlösungen, die Anlegern helfen, ihr Vermögen zu diversifizieren und zu schützen.",
                 offer: "8–10% Umsatzbeteiligung",
             },
             {
                 image: "/SS.png",
-                title: "Survival-Schulungen",
+                title: "eToro",
                 desc: "Kaufen, lagern und verwalten Sie physisches Gold und Silber über eine weltweit vertrauenswürdige Plattform.",
                 offer: "25% wiederkehrende Provision",
             },
@@ -64,7 +64,7 @@ const content = {
     },
 };
 
-export default function GridCards() {
+export default function GreenCards() {
     const lang = useLang();
     const t = content[lang];
     return (
@@ -72,8 +72,8 @@ export default function GridCards() {
             <section className="max-w-full bg-white py-16">
                 {/* text-Content */}
                 <div className="flex flex-col my-6 px-10 md:px-20">
-                    <h1 className={`${playfair.className} text-2xl md:text-3xl lg:text-4xl text-center `}>{t.heading1}<span className="text-[#B8860B]">{t.heading2}</span>{t.heading3}</h1>
-                    <p className="leading-relaxed text-center text-sm py-4">{t.subdesc}</p>
+                    <h1 className={`${playfair.className} font-bold text-2xl md:text-3xl lg:text-4xl text-center `}>{t.heading1}<span className="text-[#B8860B]">{t.heading2}</span>{t.heading3}</h1>
+                    <p className="leading-relaxed text-center text-xl py-4">{t.subdesc}</p>
                 </div>
                 {/* cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-12 py-4 ">

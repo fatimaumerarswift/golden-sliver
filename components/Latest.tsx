@@ -91,7 +91,7 @@ export default function Latest() {
         <h2 className={`${playfair.className} text-lg md:text-4xl font-bold text-black`}>
           {t.heading} <span className="text-[#B8860B]">{t.headingAccent}</span> {t.headingRest}
         </h2>
-        <p className="text-black text-sm md:text-base mt-4 max-w-2xl mx-auto">
+        <p className="text-black text-lg md:text-base mt-4  mx-auto">
           {t.subheading}
         </p>
       </div>
