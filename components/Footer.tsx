@@ -1,6 +1,6 @@
 "use client";
 
-import { FaFacebook, FaYoutube, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { CiFacebook , CiTwitter, CiYoutube, CiInstagram } from "react-icons/ci";
 import { useLang } from "@/components/uselang";
 
 const content = {
@@ -82,13 +82,13 @@ export default function Footer() {
         <div className="flex flex-col gap-6">
           <p className="text-white text-sm leading-relaxed">{t.about}</p>
           <div className="flex items-center gap-3">
-            {[FaFacebook, FaTwitter, FaInstagram, FaYoutube].map((Icon, i) => (
+            {[CiFacebook, CiTwitter, CiInstagram, CiYoutube].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
                 className="border border-white rounded-full p-2 text-white hover:border-[#B8860B] hover:bg-[#B8860B] hover:text-black transition-colors duration-200"
               >
-                <Icon size={16} />
+                <Icon size={18} />
               </a>
             ))}
           </div>
