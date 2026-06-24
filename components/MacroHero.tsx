@@ -28,18 +28,18 @@ export default function MacroHero() {
   return (
     <>
       {/* Hero section with background image */}
-      <div className="bg-white py-8 max-w-full px-12">
-        <div className="relative overflow-hidden rounded-xl mx-22 h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px]">
+      <div className="bg-white py-8 max-w-full px-4 sm:px-8 md:px-12">
+        <div className="relative overflow-hidden rounded-xl mx-0 sm:mx-6 md:mx-12 lg:mx-22 h-[220px] sm:h-[320px] md:h-[380px] lg:h-[400px]">
           <Image
             src="/Rectangle 1.png"
             alt="Gold bars background"
             fill
-            className="object-cover sm:w-2xl"
+            className="object-cover "
           />
           {/* black */}
           <div className="absolute inset-0 bg-black/40" />
           {/* text content */}
-           <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-12">
+           <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-12">
             <span className={`${inter.className} inline-block bg-[#B8860B] text-black text-xs md:text-sm px-3 py-1 rounded-md w-fit mb-3 font-bold`}>
               {t.badge}
             </span>
