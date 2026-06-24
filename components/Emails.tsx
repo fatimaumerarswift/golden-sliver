@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useLang } from "@/components/uselang";
 import { Playfair_Display, Inter } from "next/font/google";
 
-const playfair = Playfair_Display({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"] });
+const playfair = Playfair_Display({ subsets: ["latin"],  weight: ["400", "500", "600", "700", "800"] });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 const content = {
   en: {
@@ -33,17 +33,17 @@ export default function Emails() {
   const lang = useLang();
   const t = content[lang];
   return (
-    <section className=" max-w-full bg-[#1A1A1A] text-white overflow-hidden"
-    style={{
-        backgroundColor: "#1A1A1A",
-        backgroundImage:
-            "linear-gradient(to bottom, rgba(184,134,11,0.15), transparent 35%)",
-        // backgroundAttachment: "fixed"
-      }}
-    >
-
+  <section
+  className="max-w-full bg-[#1A1A1A] text-white overflow-hidden"
+  style={{
+    backgroundColor: "#1A1A1A",
+    backgroundImage:
+      "linear-gradient(to bottom, rgba(184,134,11,0.15), transparent 35%)",
+    // backgroundAttachment: "fixed",
+  }}
+>
       {/* sliver */}
-      <div className="my-4 py-8 flex justify-end mr-50 ">
+      <div className="my-4 py-8 flex justify-end mr-30 ">
         <Image
           src="/sliverbar.png"
           alt="Decorative"
@@ -55,14 +55,14 @@ export default function Emails() {
 
       {/* Heading */}
       <div className="-mt-18">   
-      <div className="max-w-3xl mx-auto px-6 text-center">
-        <h1 className={`${playfair.className} text-2xl md:text-4xl font-bold leading-snug `}>
-          {t.title1a}<span className="text-[#B8860B]">{t.title1b}</span>{t.title1c}
+      <div className="max-w-3xl mx-auto  text-center">
+        <h1 className={`${playfair.className} tracking-wider text-2xl md:text-4xl font-extrabold leading-snug `}>
+          {t.title1a}<span className="text-[#F7BD48]">{t.title1b}</span>{t.title1c}
         </h1>
-        <h1 className={`${playfair.className} text-2xl md:text-4xl font-bold leading-snug mb-4`}>
+        <h1 className={`${playfair.className} tracking-wider text-2xl md:text-4xl font-extrabold leading-snug mb-4`}>
           {t.title2}
         </h1>
-        <p className={`${inter.className} text-sm text-gray-300 leading-relaxed`}>
+        <p className={`${inter.className} text-lg text-gray-300 leading-relaxed`}>
           {t.desc1}
           <br />
           {t.desc2}
@@ -71,7 +71,7 @@ export default function Emails() {
       </div>
 
       {/* Input + Subscribe */}
-      <div className="flex flex-wrap gap-3 justify-center mt-6 mb-4">
+      <div className="flex flex-wrap gap-3 justify-center mt-10 mb-4">
         <input
           type="email"
           placeholder={t.placeholder}
@@ -85,7 +85,7 @@ export default function Emails() {
       </div> 
 
       {/* Bottom image */}
-      <div className="flex w-full justify-start pb-10 px-12 md:pl-16 lg:pl-46 ml-7 ">
+      <div className="flex w-full justify-start pb-10 px-12 md:pl-16 lg:pl-30 ">
         <Image
           src="/goldenbar.png"
           alt="Decorative"
